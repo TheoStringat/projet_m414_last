@@ -94,13 +94,16 @@ public class ListeActivity extends AppCompatActivity {
      * this is HttpAsyncGet instance is ready
      * @param presidentList is the return item from webService
      */
-    private void onPostExecute(List<President> presidentList) {
+    private void onPostExecute(ArrayList<President> presidentList) {
         progressDialog.dismiss();
         ArrayList<String> namesOfPres = new ArrayList<String>();
         presidentList.forEach( president -> namesOfPres.add(president.toString()));
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ListeActivity.this,android.R.layout.simple_list_item_1, namesOfPres);
-        ((ListView)findViewById(R.id.liste_presidents)).setAdapter(adapter);
+        //On crée l'adapteur pour associer la listeView 'liste-presidents' à notre liste de présidents 'listeAdapter'
+        PresidentAdapter adapter = new PresidentAdapter(this, presidentList);
+
+        //On passe nos données au composant ListView
+        liste_presidents.setAdapter(adapter);
 
         liste_presidents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

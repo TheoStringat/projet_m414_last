@@ -21,7 +21,7 @@ import java.util.List;
 public class HttpAsyncGet<T>{
     private static final String TAG = "theo " + HttpAsyncGet.class.getSimpleName();    //Pour affichage en cas d'erreur
     private String urlAddress;
-    private List<T> itemList;
+    private ArrayList<T> itemList;
     private HttpHandler webService;
 
     public HttpAsyncGet(String url) {
@@ -74,7 +74,7 @@ public class HttpAsyncGet<T>{
         Log.d(TAG, "president="+itemList);
     }
 
-    public List<T> getItemResult() {
+    public ArrayList<T> getItemResult() {
         return itemList;
     }
 

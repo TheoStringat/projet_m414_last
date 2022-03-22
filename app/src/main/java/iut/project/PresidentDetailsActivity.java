@@ -67,7 +67,9 @@ public class PresidentDetailsActivity extends AppCompatActivity {
         Utilisation de web services publics
      */
     public void lancer(View view) {
-        Intent intent = YouTubeStandalonePlayer.createVideoIntent(this, "AIzaSyBPtBm0KZl9dFPSS2BYuReLdtldAJofKXo", president.getLien());
+        //Nouvellesclé a garder dans le doute : AIzaSyBPtBm0KZl9dFPSS2BYuReLdtldAJofKXo
+        Log.d("lien", president.getLien());
+        Intent intent = YouTubeStandalonePlayer.createVideoIntent(this, "AIzaSyALoiu6US_Ra4bMq7hNErI1lvxOStEOJX0", president.getLien());
         startActivity(intent);
     }
     public void enSavoirPlus(View view) {
