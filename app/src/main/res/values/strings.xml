@@ -7,4 +7,6 @@
     <string name="description">Description</string>
     <string name="president_selectionne">president_selectionne</string>
     <string name="wikipedia">https://fr.wikipedia.org/wiki/</string>
+    <string name="ans">ans</string>
+    <string name="periodeSimple">Période</string>
 </resources>

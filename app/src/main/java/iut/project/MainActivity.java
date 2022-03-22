@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         /*
             Action sur le widget bouton
          */
-        bouton_accueil = (Button) findViewById(R.id.cliquer_accueil);
+        bouton_accueil = findViewById(R.id.cliquer_accueil);
         getBouton().setOnClickListener((View v) -> {
             Intent ActiviteListe = new Intent(MainActivity.this, ListeActivity.class);
             startActivity(ActiviteListe);

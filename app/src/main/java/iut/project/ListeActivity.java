@@ -95,7 +95,7 @@ public class ListeActivity extends AppCompatActivity {
         presidentList.forEach( president -> namesOfPres.add(president.toString()));
 
         //On crée l'adapteur pour associer la listeView 'liste-presidents' à notre liste de présidents 'listeAdapter'
-        PresidentAdapter adapter = new PresidentAdapter(this, presidentList);
+        PresidentAdapter adapter = new PresidentAdapter(getApplicationContext(), presidentList);
 
         //On passe nos données au composant ListView
         liste_presidents.setAdapter(adapter);

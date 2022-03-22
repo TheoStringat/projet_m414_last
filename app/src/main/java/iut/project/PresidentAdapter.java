@@ -59,9 +59,10 @@ public class PresidentAdapter extends BaseAdapter {
         Integer age = (listePresidents.get(position).getAge());
         String periode = listePresidents.get(position).getPeriode();
         tvNom.setText(nom);
-        tvStatut.setText("Statut : " + statut);
-        tvAge.setText("Age : " + age + " ans");
-        tvPeriode.setText("Période d'activité : " + periode);
+        tvStatut.setText(context.getString(R.string.statut) + " : " + statut);
+        tvAge.setText(context.getString(R.string.age) + " : " + age + " " + context.getString(R.string.ans));
+        tvPeriode.setText(context.getString(R.string.periodeSimple) + " : " + periode);
+
 
         return layoutItem;
     }
