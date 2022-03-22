@@ -4,8 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -22,22 +22,17 @@ public class ListeActivity extends AppCompatActivity {
     private static String URL = "https://api.npoint.io/7b1ab2b71aa57130e37a";
 
     //private SearchView mySearchView;
-    //private ArrayList<String> listeNom;
-    //private ArrayAdapter<String> adapterSv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_liste);
 
-        //listeNom = new ArrayList<String>();
         //mySearchView = (SearchView)findViewById(R.id.searchView);
         liste_presidents = (ListView) findViewById(R.id.liste_presidents);
 
         //La listePresidents est remplie grâce au fichier 'president.json' dans la classe Json
-        /**
-         * TODO Utiliser classe de lecture HttpAsyncGet (en cours)
-         */
         executeInThread();
 
 
@@ -83,7 +78,7 @@ public class ListeActivity extends AppCompatActivity {
      */
     private void onPreExecute() {
         progressDialog = new ProgressDialog(ListeActivity.this);
-        progressDialog.setMessage("Connexion en cours...");
+        progressDialog.setMessage("Accès aux données de la Maison Blanche...");
         progressDialog.setCancelable(false);
         progressDialog.show();
     }
@@ -109,7 +104,7 @@ public class ListeActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent PresidentDetailsActivity = new Intent(ListeActivity.this, PresidentDetailsActivity.class);
-                PresidentDetailsActivity.putExtra("president_selectionne", presidentList.get(position));
+                PresidentDetailsActivity.putExtra(getString(R.string.president_selectionne), presidentList.get(position));
                 startActivity(PresidentDetailsActivity);
             }
         });

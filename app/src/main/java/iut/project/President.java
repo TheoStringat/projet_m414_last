@@ -1,13 +1,7 @@
 package iut.project;
 
-import android.app.AlertDialog;
-import android.app.Notification;
-import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import androidx.core.app.NotificationCompat;
-
 
 public class President implements Parcelable {
     private String nom;

@@ -49,22 +49,19 @@ public class PresidentAdapter extends BaseAdapter {
             layoutItem = (LinearLayout) convertView;
         }
 
-        TextView tvNom = (TextView) layoutItem.findViewById(R.id.nom);
-        TextView tvStatut = (TextView) layoutItem.findViewById(R.id.statut);
-        TextView tvAge = (TextView) layoutItem.findViewById(R.id.age);
-        TextView tvPeriode = (TextView) layoutItem.findViewById(R.id.periode);
-        //TextView tvDescription = (TextView) layoutItem.findViewById(R.id.description);
+        TextView tvNom = layoutItem.findViewById(R.id.nom);
+        TextView tvStatut = layoutItem.findViewById(R.id.statut);
+        TextView tvAge = layoutItem.findViewById(R.id.age);
+        TextView tvPeriode = layoutItem.findViewById(R.id.periode);
 
         String nom = listePresidents.get(position).getNom();
         String statut = listePresidents.get(position).getStatut();
-        Integer age = ((Integer) listePresidents.get(position).getAge());
+        Integer age = (listePresidents.get(position).getAge());
         String periode = listePresidents.get(position).getPeriode();
-        //String description = listePresidents.get(position).getDescription();
         tvNom.setText(nom);
         tvStatut.setText("Statut : " + statut);
         tvAge.setText("Age : " + age + " ans");
         tvPeriode.setText("Période d'activité : " + periode);
-        //tvDescription.setText("Description : " + description);
 
         return layoutItem;
     }

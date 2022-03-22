@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        imageFranceDrapeau = (ImageView) findViewById(R.id.imageFranceDrapeau);
-        imageFranceUe = (ImageView) findViewById(R.id.imageFranceUe);
+        imageFranceDrapeau = findViewById(R.id.imageFranceDrapeau);
+        imageFranceUe = findViewById(R.id.imageFranceUe);
 
         imageFranceUe.setVisibility(View.INVISIBLE);
         rotation_image(getImageView(imageFranceDrapeau));
@@ -40,12 +40,9 @@ public class MainActivity extends AppCompatActivity {
             Action sur le widget bouton
          */
         bouton_accueil = (Button) findViewById(R.id.cliquer_accueil);
-        getBouton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent ActiviteListe = new Intent(MainActivity.this, ListeActivity.class);
-                startActivity(ActiviteListe);
-            }
+        getBouton().setOnClickListener((View v) -> {
+            Intent ActiviteListe = new Intent(MainActivity.this, ListeActivity.class);
+            startActivity(ActiviteListe);
         });
     }
 
@@ -61,6 +58,6 @@ public class MainActivity extends AppCompatActivity {
         Mise en place de l'animation de l'image
      */
     public void rotation_image(ImageView imageView) {
-        imageView.animate().rotationYBy(180f).setDuration(3000);
+        imageView.animate().rotationYBy(360f).setDuration(6000);
     }
 }
