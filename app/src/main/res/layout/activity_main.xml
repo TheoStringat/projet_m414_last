@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/titre_accueil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="100dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Les présidents français"
+        android:textColor="@color/black"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/presentation_accueil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center_horizontal"
+        android:text="Partez à la découverte des différents présidents français qui se sont succédés jusqu'à présent, le tout de façon ludique !"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/cliquer_accueil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/presentation_accueil"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:padding="30dp"
+        android:text="Cliquez ici pour continuer"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:backgroundTint="#FFFFFF"
+        app:strokeColor="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/imageFranceDrapeau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:alpha="0.30"
+        android:contentDescription="image france drapeau"
+        app:srcCompat="@drawable/image_france_drapeau" />
+
+    <ImageView
+        android:id="@+id/imageFranceUe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:alpha="0.30"
+        android:contentDescription="image france ue"
+        app:srcCompat="@drawable/image_france_ue" />
+
+</RelativeLayout>
