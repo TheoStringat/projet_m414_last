@@ -3,17 +3,18 @@ package iut.project;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 import java.util.concurrent.Executors;
 
 public class ListeActivity extends AppCompatActivity {
@@ -21,38 +22,24 @@ public class ListeActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private static String URL = "https://api.npoint.io/7b1ab2b71aa57130e37a";
 
-    //private SearchView mySearchView;
+    private SearchView mySearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_liste);
 
-        //mySearchView = (SearchView)findViewById(R.id.searchView);
+        mySearchView = (SearchView)findViewById(R.id.searchView);
+
+        //on définit le texte par defaut de notre barre de recherche
+        mySearchView.setQueryHint("Ecrivez un nom de président");
+
         liste_presidents = (ListView) findViewById(R.id.liste_presidents);
 
         //La listePresidents est remplie grâce au fichier 'president.json' dans la classe Json
         executeInThread();
-
-
-
-        /*mySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
-            @Override
-            public boolean onQueryTextSubmit(String s){
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s){
-                adapter.getFilter().filter(s);
-                return false;
-            }
-        });*/
     }
-
-
-
 
 
     /**
@@ -91,11 +78,39 @@ public class ListeActivity extends AppCompatActivity {
      */
     private void onPostExecute(ArrayList<President> presidentList) {
         progressDialog.dismiss();
+
+        //tri des presidents par date de quinquénat du plus ancien au plus récent
+        Collections.sort(presidentList);
+
         ArrayList<String> namesOfPres = new ArrayList<String>();
         presidentList.forEach( president -> namesOfPres.add(president.toString()));
 
         //On crée l'adapteur pour associer la listeView 'liste-presidents' à notre liste de présidents 'listeAdapter'
         PresidentAdapter adapter = new PresidentAdapter(getApplicationContext(), presidentList);
+
+        /**
+         * listener lorsque l'on entre du texte dans la barre de recherche
+         */
+        mySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+            @Override
+            public boolean onQueryTextSubmit(String s){
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s){
+                if (TextUtils.isEmpty(s)) {
+                    liste_presidents.clearTextFilter();
+
+                    liste_presidents.setAdapter(adapter);
+                }
+                else {
+                    adapter.getFilter().filter(s);
+                    liste_presidents.setAdapter(adapter);
+                }
+                return true;
+            }
+        });
 
         //On passe nos données au composant ListView
         liste_presidents.setAdapter(adapter);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="iut.project">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
 
     <application
         android:allowBackup="true"
@@ -12,14 +12,17 @@
         android:theme="@style/Theme.Projet_m414_last">
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name="iut.project.ListeActivity"/>
-        <activity android:name="iut.project.PresidentDetailsActivity"/>
+        <activity android:name=".ListeActivity" android:parentActivityName=".MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".PresidentDetailsActivity" android:parentActivityName=".ListeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".MessageActivity" android:parentActivityName=".ListeActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

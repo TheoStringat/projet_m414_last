@@ -1,21 +1,25 @@
 package iut.project;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 /*
-    Création de l'adapteur pour notre liste de presidents qui etend 'BaseAdapter'
+    Création de l'adapteur pour notre liste de presidents
  */
-public class PresidentAdapter extends BaseAdapter {
+public class PresidentAdapter extends BaseAdapter implements Filterable {
     private Context context;
     private ArrayList<President> listePresidents;
+    private ArrayList<President> listeSearch;
     private LayoutInflater layoutInflater;
 
     public PresidentAdapter(Context context, ArrayList<President> listePresidents) {
@@ -63,8 +67,45 @@ public class PresidentAdapter extends BaseAdapter {
         tvAge.setText(context.getString(R.string.age) + " : " + age + " " + context.getString(R.string.ans));
         tvPeriode.setText(context.getString(R.string.periodeSimple) + " : " + periode);
 
-
         return layoutItem;
     }
 
+    /**
+     * Fonction de filtre pour la barre de recherche
+     */
+    Filter myFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            final FilterResults oReturn = new FilterResults();
+            ArrayList<President> results = new ArrayList<>();
+            if (listeSearch == null)
+                listeSearch = listePresidents;
+            if (charSequence != null) {
+                if (charSequence == null || charSequence.toString().isEmpty()) {
+                    oReturn.values = listePresidents;
+                }
+                if (listeSearch != null && listeSearch.size() > 0) {
+                    for (President president : listeSearch) {
+                        if (president.getNom().toLowerCase().contains(charSequence.toString()))
+                            results.add(president);
+                    }
+                    oReturn.values = results;
+                }
+
+            }
+            return oReturn;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            listePresidents = (ArrayList<President>) filterResults.values;
+            notifyDataSetChanged();
+        }
+    };
+
+    @Override
+    public Filter getFilter() {
+        return myFilter;
+    }
 }

@@ -9,4 +9,19 @@
     <string name="wikipedia">https://fr.wikipedia.org/wiki/</string>
     <string name="ans">ans</string>
     <string name="periodeSimple">Période</string>
+    <string name="video">Video</string>
+    <string name="moreInfos">En savoir plus</string>
+    <string name="changerAffichageDetail">Changer</string>
+    <string name="message">Message</string>
+    <string name="debutMessage">Salut ! Je viens d\'apprendre plein d\'infos sur</string>
+    <string name="finMessage">, c\'était pas vraiment le meilleur mais il n\'en reste pas moins intéressant.</string>
+    <string name="partagerPresident">Partager le président</string>
+    <string name="titreAppli">Partez à la découverte des différents présidents français qui se sont succédés jusqu\'à présent, le tout de façon ludique !</string>
+    <string name="clicAccueil">Cliquez ici pour continuer</string>
+    <string name="contentImageAccueil">image france drapeau</string>
+    <string name="contentImageUE">image france ue</string>
+    <string name="presidentsFrancais">Les présidents français</string>
+    <string name="contentImageFranceDrapeau">imageFranceDrapeau</string>
+    <string name="numTel">Numéro de téléphone :</string>
+    <string name="btnEnvoiMess">Envoi message</string>
 </resources>

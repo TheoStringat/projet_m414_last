@@ -148,6 +148,15 @@
                 android:layout_weight="1" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/boutonPartage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Partager le président"
+            android:layout_gravity="center_horizontal"
+            app:backgroundTint="#03A9F4" />
+
+
     </LinearLayout>
 
 </FrameLayout>

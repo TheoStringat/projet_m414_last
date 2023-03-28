@@ -3,7 +3,7 @@ package iut.project;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class President implements Parcelable {
+public class President implements Parcelable, Comparable<President>{
     private String nom;
     private String statut;
     private int age;
@@ -26,7 +26,6 @@ public class President implements Parcelable {
         this.description = description;
         this.lien = lien;
     }
-
 
 
     /*
@@ -105,4 +104,12 @@ public class President implements Parcelable {
                 '}';
     }
 
+    @Override
+    public int compareTo(President president) {
+        String[] datePres = president.getPeriode().split("\\s+");
+        int anneePres = Integer.parseInt(datePres[3]);
+        String[] dateThis = this.getPeriode().split("\\s+");
+        int anneeThis = Integer.parseInt(dateThis[3]);
+        return anneeThis - anneePres;
+    }
 }
